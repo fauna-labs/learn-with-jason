@@ -1,0 +1,30 @@
+{
+  "name": "learn-with-jason",
+  "version": "0.1.0",
+  "description": "Source code for the 25 May 2021 episode of Learn With Jason - User-defined functions in Fauna",
+  "main": "app.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fauna-labs/learn-with-jason.git"
+  },
+  "keywords": [
+    "Fauna",
+    "User-defined",
+    "function",
+    "UDF",
+    "FQL"
+  ],
+  "author": "Rob Sutter <rob@fauna.com>",
+  "license": "MIT-0",
+  "bugs": {
+    "url": "https://github.com/fauna-labs/learn-with-jason/issues"
+  },
+  "homepage": "https://github.com/fauna-labs/learn-with-jason#readme",
+  "dependencies": {
+    "@fauna-labs/fauna-schema-migrate": "^2.1.2",
+    "faunadb": "^4.3.0"
+  }
+}
