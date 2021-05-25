@@ -1,0 +1,27 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+// To invoke:
+// Successful call
+// Call(Function("limit-adder"), [100, 50])
+// Failing call
+// Call(Function("limit-adder"), [200,75])
+
+CreateFunction(
+  {
+    name: "limit-adder",
+    body: Query(
+      Lambda(
+        ["op1", "op2"],
+        Let(
+            { sum: Add(Var("op1"), Var("op2")) },
+            If(
+                LTE(Var("sum"), 255),
+                Var("sum"),
+                Abort("Sum of operands larger than defined limit.")
+            )
+        )
+      )
+    )
+  }
+)

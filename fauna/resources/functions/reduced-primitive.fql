@@ -1,0 +1,40 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+// To invoke successfully:
+// Call(Function("reduced-primitive"), ["Create", [ Collection("stores"), { data: { name: "Reduced store" } } ] ] )
+// Call(Function("reduced-primitive"), ["Get", Ref(Collection("stores"), "<STORE_ID>") ] )
+// Call(Function("reduced-primitive"), ["Update", [ Ref(Collection("stores"), "<STORE_ID>"), { data: { name: "Updated reduced store" } } ] ] )
+// Call(Function("reduced-primitive"), ["Delete", Ref(Collection("stores"), "<STORE_ID>") ] )
+
+// To fail with insufficient privileges:
+// Call(Function("reduced-primitive"), ["Create", [ Collection("products"), { data: { name: "Gated product" } } ] ] )
+
+// To fail with invalid primitive:
+// Call(Function("reduced-primitive"), ["Upsert", [ Collection("store"), { data: { name: "Gated product" } } ] ] )
+
+CreateFunction(
+  {
+    name: "reduced-primitive",
+    body: Query(
+      Lambda(
+        ["primitive", "data"],
+        Reduce(
+          Lambda(["result1", "result2"], If(Not(Equals(Var("result2"), null)), Var("result2"), Var("result1"))),
+          ReplaceStr(
+            "Error: Invalid primitive \"<PRIMITIVE>\". Must be one of [\"Create\", \"Get\", \"Update\", \"Delete\"]",
+            "<PRIMITIVE>",
+            Var("primitive")
+          ),
+          [
+            If(Equals("Create", Var("primitive")), Create(Select(0, Var("data")), Select(1, Var("data"))), null),
+            If(Equals("Get", Var("primitive")), Get(Var("data")), null),
+            If(Equals("Update", Var("primitive")), Update(Select(0, Var("data")), Select(1, Var("data"))), null),
+            If(Equals("Delete", Var("primitive")), Delete(Var("data")), null)
+          ]
+        )
+      )
+    ),
+    role: Role("gated-primitive-role")
+  }
+)

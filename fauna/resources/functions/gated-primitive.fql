@@ -1,0 +1,32 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+// To invoke successfully:
+// Create(Collection("stores"), { data: {name: "Foo"}});
+// Call(Function("gated-primitive"), ["Create", [ Collection("stores"), { data: { name: "Gated store" } } ] ] )
+
+CreateRole({
+  name: "gated-primitive-role",
+  privileges: {
+    resource: Collection("stores"),
+    actions: { create: true, read: true, write: true, delete: true }
+  }
+})
+
+CreateFunction(
+  {
+    name: "gated-primitive",
+    body: Query(
+      Lambda(
+        ["primitive", "data"],
+        Do(
+          If(Equals("Create", Var("primitive")), Create(Select(0, Var("data")), Select(1, Var("data"))), null),
+          If(Equals("Get", Var("primitive")), Get(Var("data")), null),
+          If(Equals("Update", Var("primitive")), Update(Select(0, Var("data")), Select(1, Var("data"))), null),
+          If(Equals("Delete", Var("primitive")), Delete(Var("data")), null)
+        )
+      )
+    ),
+    role: Role("gated-primitive-role")
+  }
+)

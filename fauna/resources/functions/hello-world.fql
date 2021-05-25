@@ -1,0 +1,21 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+// To invoke:
+// Call(Function("hello-world"), ["world"])
+// or (short form for single arguments)
+// Call(Function("hello-world"), "world")
+
+CreateFunction(
+  {
+    name: "hello-world", 
+    body: Query(
+      Lambda(
+        ["name"],
+        Concat(
+          ["Hello, ", Var("name"), "!"]
+        )
+      )
+    )
+  }
+)
