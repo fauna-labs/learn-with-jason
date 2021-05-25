@@ -1,0 +1,4 @@
+type Query {
+  limitAdder(op1: Int!, op2: Int!): Int! @resolver(name: "limit-adder")
+  sayHello(name: String!): String! @resolver(name: "hello-world")
+}

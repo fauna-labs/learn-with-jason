@@ -15,16 +15,13 @@
     "User-defined",
     "function",
     "UDF",
-    "FQL"
+    "FQL",
+    "GraphQL"
   ],
   "author": "Rob Sutter <rob@fauna.com>",
   "license": "MIT-0",
   "bugs": {
     "url": "https://github.com/fauna-labs/learn-with-jason/issues"
   },
-  "homepage": "https://github.com/fauna-labs/learn-with-jason#readme",
-  "dependencies": {
-    "@fauna-labs/fauna-schema-migrate": "^2.1.2",
-    "faunadb": "^4.3.0"
-  }
+  "homepage": "https://github.com/fauna-labs/learn-with-jason#readme"
 }

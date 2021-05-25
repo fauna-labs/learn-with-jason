@@ -27,6 +27,10 @@ To learn more about UDFs in Fauna, visit the sample functions in the following o
 
 1. [Reduced primitives](fauna/resources/functions/reduced-primitive.fql) - Refines the `gated-primitive` function to return results and handle errors.
 
+## GraphQL
+
+A [simple GraphQL schema](fauna/graphql/schema.graphql) is provided showing how to reference UDFs as custom resolvers. Sample queries for the [hello world](fauna/graphql/queries/hello-world.graphql) and [limited sum](fauna/graphql/queries/limited-sum.graphql) UDFs are also provided.
+
 ## Next steps
 
 Learn more about FQL, including UDFs by following [this series of tutorials][fql-tutorials].
