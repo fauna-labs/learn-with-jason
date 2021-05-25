@@ -19,17 +19,17 @@ To run your function, copy the sample function call from the function definition
 
 To learn more about UDFs in Fauna, visit the sample functions in the following order. Each file contains the function definition and samples for invoking the function in the Fauna dashboard.
 
-1. [Hello world](fauna/resources/functions/hello-world.fql) - The classic "Hello, world!" function implemented in FQL! Start here to learn the syntax for defining and invoking UDFs. Accepts a single variable, concatenates some strings, and returns the result.
-1. [Limited sum](fauna/resources/functions/limit-adder.fql) - Double the parameters but far more functionality! Demonstrates multiple parameters, branch with [`If`][fql-if], and throwing errors with [`Abort`][fql-abort].
-1. [Gated primitives](fauna/resources/functions/gated-primitive.fql) - Demonstrates wrapping FQL functionality, which is useful for restricting privileges, performing attribute-based authentication control (ABAC), unit testing your UDFs, and injecting failures. Also introduces function roles, which allow the UDF to run with permissions different from the invoking user or resource.
+1. [Hello world](fql/functions/hello-world.fql) - The classic "Hello, world!" function implemented in FQL! Start here to learn the syntax for defining and invoking UDFs. Accepts a single variable, concatenates some strings, and returns the result.
+1. [Limited sum](fql/functions/limit-adder.fql) - Double the parameters but far more functionality! Demonstrates multiple parameters, branch with [`If`][fql-if], and throwing errors with [`Abort`][fql-abort].
+1. [Gated primitives](fql/functions/gated-primitive.fql) - Demonstrates wrapping FQL functionality, which is useful for restricting privileges, performing attribute-based authentication control (ABAC), unit testing your UDFs, and injecting failures. Also introduces function roles, which allow the UDF to run with permissions different from the invoking user or resource.
 
     **WARNING**: Do not use this function in production - it does not properly handle results!
 
-1. [Reduced primitives](fauna/resources/functions/reduced-primitive.fql) - Refines the `gated-primitive` function to return results and handle errors.
+1. [Reduced primitives](fql/functions/reduced-primitive.fql) - Refines the `gated-primitive` function to return results and handle errors.
 
 ## GraphQL
 
-A [simple GraphQL schema](fauna/graphql/schema.graphql) is provided showing how to reference UDFs as custom resolvers. Sample queries for the [hello world](fauna/graphql/queries/hello-world.graphql) and [limited sum](fauna/graphql/queries/limited-sum.graphql) UDFs are also provided.
+A [simple GraphQL schema](graphql/schema.graphql) is provided showing how to reference UDFs as custom resolvers. Sample queries for the [hello world](graphql/queries/hello-world.graphql) and [limited sum](graphql/queries/limited-sum.graphql) UDFs are also provided.
 
 ## Next steps
 
