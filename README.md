@@ -29,7 +29,7 @@ To learn more about UDFs in Fauna, visit the sample functions in the following o
 
 ## GraphQL
 
-A [simple GraphQL schema](graphql/schema.graphql) is provided showing how to reference UDFs as custom resolvers. Sample queries for the [hello world](graphql/queries/hello-world.graphql) and [limited sum](graphql/queries/limited-sum.graphql) UDFs are also provided.
+A [simple GraphQL schema](graphql/schema.graphql) is provided showing how to reference UDFs as custom resolvers. Sample queries for the [hello world](graphql/queries/hello-world.graphql) and [limited sum](graphql/queries/limit-adder.graphql) UDFs are also provided.
 
 ## Next steps
 
