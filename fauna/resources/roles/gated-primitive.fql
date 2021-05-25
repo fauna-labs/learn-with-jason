@@ -1,0 +1,11 @@
+// Copyright Fauna, Inc.
+// SPDX-License-Identifier: MIT-0
+
+// Create the `gated-primitive` role in the [Fauna dashboard](https://dashboard.fauna.com) before creating the `gated-primitive` function.
+CreateRole({
+  name: "gated-primitive",
+  privileges: {
+    resource: Collection("stores"),
+    actions: { create: true, read: true, write: true, delete: true }
+  }
+})

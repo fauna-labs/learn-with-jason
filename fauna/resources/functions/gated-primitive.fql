@@ -5,18 +5,10 @@
 // Create(Collection("stores"), { data: {name: "Foo"}});
 // Call(Function("gated-primitive"), ["Create", [ Collection("stores"), { data: { name: "Gated store" } } ] ] )
 
-// If deploying from the dashboard, create the `gated-primitive-role` before creating the `gated-primitive` function.
-// The `fauna-schema-migrate` tool will automatically detect and create this role.
-CreateRole({
-  name: "gated-primitive-role",
-  privileges: {
-    resource: Collection("stores"),
-    actions: { create: true, read: true, write: true, delete: true }
-  }
-})
-
 // WARNING: Do not use this function in production - it does not properly handle results!
 // See reduced-primitive.fql for an example that handles errors and returns the correct result.
+
+// Create the [`gated-primitive` role](../roles/gated-primitive.fql) before creating the `gated-primitive` function.
 CreateFunction(
   {
     name: "gated-primitive",
@@ -31,6 +23,6 @@ CreateFunction(
         )
       )
     ),
-    role: Role("gated-primitive-role")
+    role: Role("gated-primitive")
   }
 )

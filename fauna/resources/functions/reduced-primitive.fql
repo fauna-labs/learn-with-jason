@@ -35,6 +35,6 @@ CreateFunction(
         )
       )
     ),
-    role: Role("gated-primitive-role")
+    role: Role("gated-primitive")
   }
 )
